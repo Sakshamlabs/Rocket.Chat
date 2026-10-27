@@ -182,6 +182,10 @@ describe('autoLink helper function', () => {
 		);
 	});
 
+	it("should return an url concatenated '//' for bare domain with port (no protocol)", () => {
+		expect(autoLink('rocket.chat:3000')).toEqual(link('//rocket.chat:3000', [plain('rocket.chat:3000')]));
+	});
+
 	it("should return an plain text url due to invalid TLD that's validate with the external library TLDTS", () => {
 		expect(autoLink('rocket.chattt/url_path')).toEqual(plain('rocket.chattt/url_path'));
 	});
